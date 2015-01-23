@@ -1,0 +1,51 @@
+package com.src.utdhack;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+
+public class DAO {
+	
+	public List<Domain> getSearchResults(String cityName) {
+		
+		Connection conn = null;
+		List<Domain> domains = new ArrayList<Domain>();
+		try{
+			conn =DriverManager.getConnection("jdbc:mysql://localhost:3306/TRIPPLANNER?" +
+						"user=root&password=root");
+			Statement stmt = conn.createStatement();
+		    ResultSet rs = stmt.executeQuery("SELECT * FROM  table_destination where City="+ cityName);
+		   
+		    while(rs.next()){
+		    	Domain d = new Domain();
+		    	d.setId(rs.getInt(0));
+		    	d.setPlaceName(rs.getString(1));
+		    	d.setCity(rs.getString(2));
+		    	d.setAddress(rs.getString(3));
+		    	d.setRating(rs.getFloat(4));
+		    	d.setTimeSpent(rs.getFloat(5));
+		    	domains.add(d);
+		    }
+
+		    conn.close();
+		    
+			
+		} catch(Exception ex){
+			ex.printStackTrace();
+		} finally{
+			
+		}
+		return domains;
+		
+	}
+	
+	
+	public void getPlaces(){
+		
+	}
+
+}

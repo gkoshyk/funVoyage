@@ -1,0 +1,16 @@
+package com.src.utdhack;
+
+
+public class DAO {
+	
+	public void getSearchResults(String cityName){
+		
+		Connection con = DriverManager.getConnection("jdbc:myDriver:myDatabase",
+                "uname",
+                "pwd");
+
+		
+	}
+	
+
+}

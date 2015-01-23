@@ -1,0 +1,9 @@
+package com.src.utdhack;
+
+public class RouteVO {
+	
+	private int rountno;
+	private String path[];
+	
+
+}

@@ -1,0 +1,35 @@
+package com.src.utdhack;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+
+public class DAO {
+	
+	public void getSearchResults(String cityName) {
+		
+		Connection conn = null;
+		try{
+			conn =DriverManager.getConnection("jdbc:mysql://localhost/test?" +
+						"user=monty&password=greatsqldb");
+			Statement stmt = conn.createStatement();
+		    ResultSet rs = stmt.executeQuery("SELECT a, b, c FROM Table1");
+		    while(rs.next()){
+		    	
+		    }
+
+		    conn.close();
+			
+		} catch(Exception ex){
+			ex.printStackTrace();
+		} finally{
+			
+		}
+
+		
+	}
+	
+
+}
